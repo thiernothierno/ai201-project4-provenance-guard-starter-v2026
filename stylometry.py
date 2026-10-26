@@ -47,6 +47,17 @@ def words(text: str) -> list[str]:
 
 # ── The three measures — YOU BUILD THESE ─────────────────────────────────────
 
+def build_dictionary(text: str) -> dict:
+
+    dictionary = {}
+    for word in text:
+        if word in dictionary:
+            dictionary[word] += 1
+        else:
+            dictionary[word] = 1
+    return dictionary
+
+
 def sentence_length_spread(text: str) -> float:
     """
     How much sentence length varies. ← TODO
@@ -64,13 +75,27 @@ def sentence_length_spread(text: str) -> float:
     `stdev` raises on fewer than two values. Decide what that should return
     before the attack set decides for you.
     """
-    # TODO: replace this
-    return 0.0
+    
+    new_text = sentences(text)
+    total_sentences = len(new_text)
+  
+    if total_sentences <= 1:
+        return 0
+
+    sentence_length = []
+    for sentence in new_text:
+        sentence_length.append(len(words(sentence)))
+
+    mean = statistics.mean(sentence_length)
+    standard_deviation = statistics.stdev(sentence_length)
+  
+    return round((standard_deviation/mean), 3)
 
 
 def type_token_ratio(text: str) -> float:
     """
     Unique words over total words. ← TODO
+    
 
     Returns:
         A float between 0 and 1. Higher means more varied vocabulary.
@@ -80,8 +105,19 @@ def type_token_ratio(text: str) -> float:
     directly comparable on it, and if your test inputs vary a lot in length,
     that alone can look like a signal.
     """
-    # TODO: replace this
-    return 0.0
+    new_text = words(text)
+    total_words = len(new_text)
+    word_dictionary = build_dictionary(new_text)
+    distinct_word = []
+    for key in word_dictionary.keys():
+        distinct_word.append(key)
+
+    total_unique_word = len(distinct_word)
+    if total_words == 0:
+        return 0
+    unique_word_over_total_words = round((total_unique_word / total_words), 3)
+    
+    return unique_word_over_total_words
 
 
 def punctuation_density(text: str) -> float:
@@ -94,8 +130,16 @@ def punctuation_density(text: str) -> float:
         more interesting than full stops, because they vary more between
         writers.
     """
-    # TODO: replace this
-    return 0.0
+    
+    total_word = len(words(text))
+    all_punctuation = ['!', '\"', '#', '$', '—' , '%', '&', '\\', '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', ']', '^', '_', '`', '{', '|', '}', '~']
+    total_punctuation = 0
+    for char in text:
+        if char in all_punctuation:
+            total_punctuation += 1
+    if total_word == 0:
+        return 0
+    return round((total_punctuation / total_word), 3)
 
 
 # ── Combining them ───────────────────────────────────────────────────────────
@@ -122,8 +166,25 @@ def style_signal(text: str) -> float:
     you trust it. Plain and ordinary, not formal: formal prose reads as *human*
     to signal one, and it is plain writing that gets accused.
     """
-    # TODO: replace this
-    return 0.5
+    sentence_l_s = sentence_length_spread(text)
+    type_t_r = type_token_ratio(text)
+    punctuation_d = punctuation_density(text)
+
+    if sentence_l_s > 1 :
+            sentence_l_s = 1
+    
+    if type_t_r > 1:
+        type_t_r = 1
+    if punctuation_d > 1:
+        punctuation_d = 1
+
+    sentence = 1 - sentence_l_s
+    type_t = 1- type_t_r
+    punctuation = 1- punctuation_d
+
+    
+   
+    return (sentence + type_t + punctuation) / 3
 
 
 if __name__ == "__main__":

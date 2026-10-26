@@ -8,7 +8,7 @@ assumed — the starter ships one that already answers.
 
 ---
 
-## Before your first class
+## Before your first class  
 
 ```bash
 python3 -m venv .venv
