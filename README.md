@@ -1,6 +1,6 @@
 # Provenance Guard
 
-> ### 👋 Start here 
+> ### 👋 Start here
 >
 > **New to this repo? Read [RUNNING.md](RUNNING.md) first.**
 >
@@ -142,15 +142,13 @@ $ curl -X POST http://127.0.0.1:5000/submit \
 ```
 
 {
-  "confidence": 0.7235,
-  "content_id": "454fc21a-db88-4972-a22f-36c976fd676e",
-  "guess": "ai",
-  "label": "PLACEHOLDER \u2014 write the high-confidence AI label.",
-  "model_score": 0.792,
-  "style_score": 0.655
+"confidence": 0.7235,
+"content_id": "454fc21a-db88-4972-a22f-36c976fd676e",
+"guess": "ai",
+"label": "PLACEHOLDER \u2014 write the high-confidence AI label.",
+"model_score": 0.792,
+"style_score": 0.655
 }
-
-
 
 **An appeal**
 
@@ -161,12 +159,10 @@ $ curl -X POST http://127.0.0.1:5000/appeal \
 ```
 
 {
-  "content_id": "454fc21a-db88-4972-a22f-36c976fd676e",
-  "message": "Appeal recorded. A human will review this decision.",
-  "status": "under_review"
+"content_id": "454fc21a-db88-4972-a22f-36c976fd676e",
+"message": "Appeal recorded. A human will review this decision.",
+"status": "under_review"
 }
-
-
 
 **What the log shows afterwards**
 
@@ -235,6 +231,19 @@ $ curl "http://127.0.0.1:5000/log?limit=3"
 ## Rate Limiting
 
 **My limits:** **_ per minute, _** per day
+
+RATE_LIMIT_PER_MINUTE = 5
+RATE_LIMIT_PER_DAY = 150
+
+============================================================
+200 200 200 200 200 429 429 429 429 429 429 429 429 429 429
+============================================================
+
+10 of 15 were rate limited. Paste the run above into your README
+
+Each 429 left a trace in audit.jsonl
+`{"timestamp": "2026-11-01T19:15:08+00:00", "creator_id": "flood_tester", "event": "rejected", "status": "rejected", "reason": "rate_limited", "limit": "5 per 1 minute"}
+`
 
 **Why those numbers and not others:**
 
