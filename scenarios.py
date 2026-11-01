@@ -30,8 +30,11 @@ SCENARIOS = [
         # things you actually wrote. This is the criterion that matters most and
         # it's meaningless with someone else's prose.
         "texts": [
-            "REPLACE ME with a paragraph you wrote yourself.",
-            "REPLACE ME with another one. Ten pieces is the usual number.",
+            "Paris is my favorite city to visit. I go there once a year.",
+            "I love to cook my own food. And my favorite one is djollofo rice although I never make it myself.",
+            "Learning and exercising have been my favorite hobby so far.",
+            "Always wanted to learn to play tennis. I wonder when it gonna happen?",
+            "Today's schedule was packed from cleaning, reading, and cooking."
         ],
     },
     {
@@ -40,24 +43,24 @@ SCENARIOS = [
         # Inputs spread across your score range, so you can check all three
         # labels are actually reachable.
         "texts": [
-            "REPLACE ME with something you're confident is AI-generated.",
-            "REPLACE ME with something you're confident is human-written.",
-            "REPLACE ME with something genuinely borderline.",
+            "The morning sun filtered through the trees as a gentle breeze moved across the quiet street.",
+            "I wonder when I need to schedule for a haircut.",
+            "Soft sunlight streamed through the leafy branches, casting delicate shadows along the peaceful street. A cool breeze rustled the trees, while the occasional sound of passing cars broke the quiet atmosphere. It was a calm and pleasant morning, with the neighborhood slowly coming to life.",
         ],
     },
     # A bad-input criterion looks like this. Uncomment and adjust if that's one
     # of your five — these are raw request bodies, sent exactly as written.
     #
-    # {
-    #     "name": "bad input",
-    #     "criterion": 3,
-    #     "bodies": [
-    #         {"text": "", "creator_id": "eval_bad_empty"},
-    #         {"creator_id": "eval_bad_missing"},          # no text field at all
-    #         {"text": "word " * 50000, "creator_id": "eval_bad_huge"},
-    #         {"text": None, "creator_id": "eval_bad_null"},
-    #     ],
-    # },
+    {
+        "name": "bad input",
+        "criterion": 3,
+        "bodies": [
+            {"text": "", "creator_id": "eval_bad_empty"},
+            {"creator_id": "eval_bad_missing"},          # no text field at all
+            {"text": "word " * 50000, "creator_id": "eval_bad_huge"},
+            {"text": None, "creator_id": "eval_bad_null"},
+        ],
+    },
 
     # TODO: add what your remaining criteria need.
     #

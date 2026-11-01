@@ -5,16 +5,16 @@ Five criteria that say what "working" means for this service, written in unit 7
 
 **All five are yours.** None are given.
 
-An acceptance criterion names a number or something plainly observable. *"The
-detector is accurate"* is an opinion — and perfect AI detection isn't possible
-anyway, so it's an opinion about something nobody can deliver. *"Of 10 pieces I
-wrote myself, at most 1 is labelled high-confidence AI"* is a criterion.
+An acceptance criterion names a number or something plainly observable. _"The
+detector is accurate"_ is an opinion — and perfect AI detection isn't possible
+anyway, so it's an opinion about something nobody can deliver. _"Of 10 pieces I
+wrote myself, at most 1 is labelled high-confidence AI"_ is a criterion.
 
-Under each, write a sentence or two on **why that target**. *"I allow at most 1
+Under each, write a sentence or two on **why that target**. _"I allow at most 1
 false positive in 10 because on a writing site a wrong accusation costs more
-than a missed detection"* is a real answer.
+than a missed detection"_ is a real answer.
 
-> Missing your own targets next unit costs you nothing. Setting a target so
+> Missing your own targets next unit costs you nothing. Setting a target so  
 > easy you can't miss it does.
 
 ---
@@ -23,13 +23,13 @@ than a missed detection"* is a real answer.
 
 **Cover at least three of these five areas.** They're prompts, not a form.
 
-| Area | A question it could answer |
-|---|---|
-| False positives | How often may a human's writing get called AI? |
-| Score spread | How far apart should clearly-AI and clearly-human text score? |
-| Label coverage | Is every one of your three labels actually reachable? |
-| The appeal path | Does an appeal always change status and always get recorded? |
-| Bad input | What happens when `text` is missing, empty, or enormous? |
+| Area            | A question it could answer                                    |
+| --------------- | ------------------------------------------------------------- |
+| False positives | How often may a human's writing get called AI?                |
+| Score spread    | How far apart should clearly-AI and clearly-human text score? |
+| Label coverage  | Is every one of your three labels actually reachable?         |
+| The appeal path | Does an appeal always change status and always get recorded?  |
+| Bad input       | What happens when `text` is missing, empty, or enormous?      |
 
 Two things worth knowing before you pick numbers:
 
@@ -42,63 +42,44 @@ Two things worth knowing before you pick numbers:
   a **miss**.
 
 ---
-## 1.
 
-<!-- Your criterion. It must name a number. -->
+## 1. False Positive
 
-
+Most of the time (35 out of 50 ) the model is unsure differenciating human text from ai text.
 
 **Why this target:**
-
-
 
 ---
 
-## 2.
+## 2. Score spread
 
-<!-- Your criterion. -->
-
-
+Whenever the model is unsure about predicting the test passed, the score fall between 0.5 and 0.6
 
 **Why this target:**
-
-
 
 ---
 
-## 3.
+## 3. Label coverage
 
-<!-- Your criterion. -->
-
-
+For each run the model always categorize the label as either ai, human or unsure.
 
 **Why this target:**
-
-
 
 ---
 
-## 4.
+## 4. The appeal path
 
-<!-- Your criterion. -->
-
-
+An appeal already update the status and store the output.
 
 **Why this target:**
-
-
 
 ---
 
-## 5.
+## 5. Bad input
 
-<!-- Your criterion. -->
-
-
+The model always return an error when a bad input such as empty string or a test more than 10000 characters is passed.
 
 **Why this target:**
-
-
 
 ---
 
