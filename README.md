@@ -241,9 +241,7 @@ RATE_LIMIT_PER_DAY = 150
 
 Each 429 left a trace in audit.jsonl
 
-```{"timestamp": "2026-11-01T19:15:08+00:00", "creator_id": "flood_tester", "event": "rejected", "status": "rejected", "reason": "rate_limited", "limit": "5 per 1 minute"}
-
-```
+`{"timestamp": "2026-11-01T19:15:08+00:00", "creator_id": "flood_tester", "event": "rejected", "status": "rejected", "reason": "rate_limited", "limit": "5 per 1 minute"}`
 
 **Why those numbers and not others:**
 
