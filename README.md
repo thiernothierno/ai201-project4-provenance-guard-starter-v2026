@@ -376,6 +376,7 @@ that produced it:
 **Trial 1**
 
 ```
+python run_eval.py --label before
 [
   {
     "status": 200,
@@ -413,6 +414,7 @@ that produced it:
 **Trial 1**
 
 ```
+python run_eval.py --label before
 [
   {
     "status": 200,
@@ -449,6 +451,7 @@ that produced it:
 **Trial 1**
 
 ```
+python run_eval.py --label before
 [
   {
     "status": 400,
