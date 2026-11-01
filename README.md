@@ -266,18 +266,16 @@ can look like one. -->
 
 ## Attack Run — Before
 
-| Family               | Attacks | Auto-BROKE | Left to judge |
-| -------------------- | ------- | ---------- | ------------- |
-| `evasion`            | 10      | 0          | 10            |
-| `false_positive`     | 8       | 0          | 8             |
-| `flood_same_creator` | 12      | 0          | 12            |
-| `malformed`          | 20      | 2          | 18            |
-| `prompt_injection`   | 6       | 0          | 6             |
-| `Total`              | 56      | 2          | 54            |
+| Family               | Attacks | Broke | Held |
+| -------------------- | ------- | ----- | ---- |
+| `evasion`            | 10      | 0     | 10   |
+| `false_positive`     | 8       | 0     | 8    |
+| `flood_same_creator` | 12      | 0     | 12   |
+| `malformed`          | 20      | 2     | 18   |
+| `prompt_injection`   | 6       | 0     | 6    |
+| `Total`              | 56      | 2     | 54   |
 
 **Ten audit log entries from the run**
-
-<!-- Choose entries that show the interesting failures, not the ten easiest. -->
 
 ```
 {"timestamp": "2026-11-01T19:15:08+00:00", "content_id": "879e8198-607e-4e82-88fa-9a18586aeda8", "creator_id": "flood_tester", "guess": "human", "model_score": 0.2588, "style_score": 0.4046666666666667, "combined_score": 0.3317333333333333, "label": "PLACEHOLDER — write the high-confidence human label.", "status": "decided"}
@@ -314,8 +312,122 @@ whose work got caught by it:
 **Real output from one trial**, pasted as text, naming the file and function
 that produced it:
 
-```json
+### my own writing
 
+**Trial 1**
+
+```
+[
+  {
+    "status": 200,
+    "guess": "ai",
+    "confidence": 0.7242500000000001,
+    "model_score": 0.8695,
+    "style_score": 0.5790000000000001,
+    "label": "PLACEHOLDER \u2014 write the high-confidence AI label.",
+    "sent": "Paris is my favorite city to visit. I go there once a year."
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.4302166666666667,
+    "model_score": 0.3351,
+    "style_score": 0.5253333333333333,
+    "label": "PLACEHOLDER \u2014 write the unsure label.",
+    "sent": "I love to cook my own food. And my favorite one is djollofo rice altho"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.5168666666666666,
+    "model_score": 0.4004,
+    "style_score": 0.6333333333333333,
+    "label": "PLACEHOLDER \u2014 write the unsure label.",
+    "sent": "Learning and exercising have been my favorite hobby so far."
+  },
+]
+
+```
+
+### label coverage
+
+**Trial 1**
+
+```
+[
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.6307333333333333,
+    "model_score": 0.5738,
+    "style_score": 0.6876666666666665,
+    "label": "PLACEHOLDER \u2014 write the unsure label.",
+    "sent": "The morning sun filtered through the trees as a gentle breeze moved ac"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.4570333333333333,
+    "model_score": 0.2474,
+    "style_score": 0.6666666666666666,
+    "label": "PLACEHOLDER \u2014 write the unsure label.",
+    "sent": "I wonder when I need to schedule for a haircut."
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.6216666666666666,
+    "model_score": 0.615,
+    "style_score": 0.6283333333333333,
+    "label": "PLACEHOLDER \u2014 write the unsure label.",
+    "sent": "Soft sunlight streamed through the leafy branches, casting delicate sh"
+  }
+]
+```
+
+### bad input
+
+**Trial 1**
+
+```
+[
+  {
+    "status": 400,
+    "guess": null,
+    "confidence": null,
+    "model_score": null,
+    "style_score": null,
+    "label": null,
+    "sent": "(empty text)"
+  },
+  {
+    "status": 400,
+    "guess": null,
+    "confidence": null,
+    "model_score": null,
+    "style_score": null,
+    "label": null,
+    "sent": "{\"creator_id\": \"eval_bad_missing\"}"
+  },
+  {
+    "status": 200,
+    "guess": "ai",
+    "confidence": 0.99875,
+    "model_score": 0.9975,
+    "style_score": 1.0,
+    "label": "PLACEHOLDER \u2014 write the high-confidence AI label.",
+    "sent": "word word word word word word word word word word word word word word "
+  },
+  {
+    "status": 400,
+    "guess": null,
+    "confidence": null,
+    "model_score": null,
+    "style_score": null,
+    "label": null,
+    "sent": "{\"text\": null, \"creator_id\": \"eval_bad_null\"}"
+  }
+]
 ```
 
 **Diagnoses**
