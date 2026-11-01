@@ -235,15 +235,15 @@ $ curl "http://127.0.0.1:5000/log?limit=3"
 RATE_LIMIT_PER_MINUTE = 5
 RATE_LIMIT_PER_DAY = 150
 
-============================================================
 200 200 200 200 200 429 429 429 429 429 429 429 429 429 429
-============================================================
 
 10 of 15 were rate limited. Paste the run above into your README
 
 Each 429 left a trace in audit.jsonl
-`{"timestamp": "2026-11-01T19:15:08+00:00", "creator_id": "flood_tester", "event": "rejected", "status": "rejected", "reason": "rate_limited", "limit": "5 per 1 minute"}
-`
+
+```{"timestamp": "2026-11-01T19:15:08+00:00", "creator_id": "flood_tester", "event": "rejected", "status": "rejected", "reason": "rate_limited", "limit": "5 per 1 minute"}
+
+```
 
 **Why those numbers and not others:**
 
