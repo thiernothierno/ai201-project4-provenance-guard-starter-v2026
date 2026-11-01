@@ -15,7 +15,7 @@ and the one you most want to compare is the one from before the change.
 
     from audit import log_decision, read_entries
 
-    log_decision(content_id=..., creator_id=..., guess="ai", ...)
+    log_decision(content_id=..., creator_id=..., guess="ai", ...)  
     entries = read_entries(limit=50)
 """
 

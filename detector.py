@@ -18,7 +18,7 @@ that into a 0–1 score where **higher means more likely AI**.
 
 Everything runs locally. No account, no key, no card.
 
-⚠️ **The blind spot, which you have to name in Milestone 1.**
+⚠️ **The blind spot, which you have to name in Milestone 1.** 
 
 Predictability is not the same thing as authorship. What this signal actually
 rewards is **common words in short, ordinary sentences** — and plenty of real
