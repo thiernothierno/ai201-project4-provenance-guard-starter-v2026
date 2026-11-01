@@ -266,14 +266,26 @@ can look like one. -->
 
 ## Attack Run — Before
 
-<!-- Every attack with its outcome and a held-or-broke mark.
-     `run_attacks.py --label before` produces the table. -->
+| Family               | Attacks | Auto-BROKE | Left to judge |
+| -------------------- | ------- | ---------- | ------------- |
+| `evasion`            | 10      | 0          | 10            |
+| `false_positive`     | 8       | 0          | 8             |
+| `flood_same_creator` | 12      | 0          | 12            |
+| `malformed`          | 20      | 2          | 18            |
+| `prompt_injection`   | 6       | 0          | 6             |
+| `Total`              | 56      | 2          | 54            |
 
 **Ten audit log entries from the run**
 
 <!-- Choose entries that show the interesting failures, not the ten easiest. -->
 
-```json
+```
+{"timestamp": "2026-11-01T19:15:08+00:00", "content_id": "879e8198-607e-4e82-88fa-9a18586aeda8", "creator_id": "flood_tester", "guess": "human", "model_score": 0.2588, "style_score": 0.4046666666666667, "combined_score": 0.3317333333333333, "label": "PLACEHOLDER — write the high-confidence human label.", "status": "decided"}
+{"timestamp": "2026-11-01T19:15:08+00:00", "content_id": "c0d62602-5eea-4d76-8a4c-1a145e4d7d2f", "creator_id": "flood_tester", "guess": "human", "model_score": 0.2588, "style_score": 0.4046666666666667, "combined_score": 0.3317333333333333, "label": "PLACEHOLDER — write the high-confidence human label.", "status": "decided"}
+{"timestamp": "2026-11-01T19:15:08+00:00", "content_id": "e468a481-6ee9-4c99-abb7-312060f8e996", "creator_id": "flood_tester", "guess": "human", "model_score": 0.2588, "style_score": 0.4046666666666667, "combined_score": 0.3317333333333333, "label": "PLACEHOLDER — write the high-confidence human label.", "status": "decided"}
+{"timestamp": "2026-11-01T19:15:08+00:00", "content_id": "fa9c3405-8962-4179-b480-54acae58dd72", "creator_id": "flood_tester", "guess": "human", "model_score": 0.2588, "style_score": 0.4046666666666667, "combined_score": 0.3317333333333333, "label": "PLACEHOLDER — write the high-confidence human label.", "status": "decided"}
+{"timestamp": "2026-11-01T19:15:08+00:00", "content_id": "96c52a08-17bd-41af-ba36-6d3de1fbe2c2", "creator_id": "flood_tester", "guess": "human", "model_score": 0.2588, "style_score": 0.4046666666666667, "combined_score": 0.3317333333333333, "label": "PLACEHOLDER — write the high-confidence human label.", "status": "decided"}
+{"timestamp": "2026-11-01T19:15:08+00:00", "creator_id": "flood_tester", "event": "rejected", "status": "rejected", "reason": "rate_limited", "limit": "5 per 1 minute"}
 
 ```
 
